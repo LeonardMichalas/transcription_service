@@ -1,0 +1,20 @@
+# Ignore the virtual environment folder
+myenv/
+
+# Ignore private folders
+interview_files/
+transcribed_files/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore log files
+logs/
+
+# Ignore temporary files
+temp/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
