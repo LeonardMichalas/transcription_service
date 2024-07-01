@@ -22,7 +22,7 @@ def video_to_audio(video_file, audio_file):
 
 # Function to transcribe audio using Whisper
 def transcribe_audio(audio_file):
-    model = whisper.load_model("base")
+    model = whisper.load_model("medium")
     result = model.transcribe(audio_file)
     if result and 'text' in result:
         print(f"Transcription completed for {audio_file}")
