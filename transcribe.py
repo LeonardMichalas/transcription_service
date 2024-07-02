@@ -1,13 +1,14 @@
 import moviepy.editor as mp
 import whisper
+import subprocess
 from pyannote.audio import Pipeline
 from tqdm import tqdm
 import torch
 import os
 
 # Define the video file to transcribe and the output file name
-VIDEO_FILE = "interview_files/test.mp4"
-ALIGNED_TRANSCRIPTION_FILE = "transcribed_files/test.txt"
+VIDEO_FILE = "interview_files/interview2.mp4"
+ALIGNED_TRANSCRIPTION_FILE = "transcribed_files/interview2.txt"
 
 # Retrieve the Hugging Face authentication token from environment variables
 AUTH_TOKEN = os.getenv("HUGGING_FACE_AUTH_TOKEN")
@@ -16,9 +17,20 @@ if AUTH_TOKEN is None:
 
 # Function to convert video to audio
 def video_to_audio(video_file, audio_file):
-    video = mp.VideoFileClip(video_file)
-    video.audio.write_audiofile(audio_file)
-    print(f"Converted {video_file} to {audio_file}")
+    try:
+        command = [
+            'ffmpeg', '-i', video_file, '-ac', '1', '-ar', '16000', audio_file
+        ]
+        print(f"Running command: {' '.join(command)}")
+        subprocess.run(command, check=True)
+        print(f"Converted {video_file} to {audio_file}")
+        if os.path.exists(audio_file):
+            print(f"File size of {audio_file}: {os.path.getsize(audio_file)} bytes")
+        else:
+            print(f"Failed to create {audio_file}")
+    except subprocess.CalledProcessError as e:
+        print(f"ffmpeg command failed with error: {e}")
+        raise
 
 # Function to transcribe audio using Whisper
 def transcribe_audio(audio_file):
@@ -101,4 +113,3 @@ def process_video(video_file, aligned_transcription_file, auth_token):
 
 # Run the process with your defined variables
 process_video(VIDEO_FILE, ALIGNED_TRANSCRIPTION_FILE, AUTH_TOKEN)
-
