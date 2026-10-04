@@ -1,6 +1,6 @@
-# Transcription Service
+# whisper-diarize
 
-[![CI](https://github.com/LeonardMichalas/transcription_service/actions/workflows/ci.yml/badge.svg)](https://github.com/LeonardMichalas/transcription_service/actions/workflows/ci.yml)
+[![CI](https://github.com/LeonardMichalas/whisper-diarize/actions/workflows/ci.yml/badge.svg)](https://github.com/LeonardMichalas/whisper-diarize/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -30,8 +30,8 @@ A GPU is optional. On a CPU, use a smaller model such as `small` or `turbo` for 
 ## Install
 
 ```bash
-uv tool install git+https://github.com/LeonardMichalas/transcription_service
-# or: pip install git+https://github.com/LeonardMichalas/transcription_service
+uv tool install git+https://github.com/LeonardMichalas/whisper-diarize
+# or: pip install git+https://github.com/LeonardMichalas/whisper-diarize
 ```
 
 ## Usage

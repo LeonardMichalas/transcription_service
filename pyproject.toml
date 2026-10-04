@@ -1,5 +1,5 @@
 [project]
-name = "transcription-service"
+name = "whisper-diarize"
 version = "0.2.0"
 description = "Transcribe audio and video with Whisper and label each line with its speaker using pyannote."
 readme = "README.md"
@@ -25,7 +25,7 @@ dependencies = [
 transcribe = "transcribe:main"
 
 [project.urls]
-Homepage = "https://github.com/LeonardMichalas/transcription_service"
+Homepage = "https://github.com/LeonardMichalas/whisper-diarize"
 
 [dependency-groups]
 dev = [
